@@ -10,12 +10,23 @@ public class Task02Main {
     private static final Item ITEM6 = new Item("Товар 6", 60);
 
     public static void main(String[] args) {
+        // Создаем обычный счет
         Bill bill = new Bill();
-        bill.add(ITEM1, 10);
-        bill.add(ITEM3, 3);
-        bill.add(ITEM6, 1);
+        bill.add(ITEM1, 100);
+
+        // Выводим информацию о счете без скидки
+        System.out.println("Счет без скидки:");
         System.out.println(bill);
-        bill.add(ITEM3, 3);
-        System.out.println(bill);
+        System.out.println("Итоговая цена: " + bill.getPrice());
+
+        // Создаем счет со скидкой 10%
+        DiscountBill discountBill = new DiscountBill(80); // 10% скидка
+        discountBill.add(ITEM1, 100);
+
+        // Выводим информацию о счете со скидкой
+        System.out.println("\nСчет со скидкой 10%:");
+        System.out.println(discountBill);
+        System.out.println("Итоговая цена со скидкой: " + discountBill.getPrice());
+        System.out.println("Размер скидки: " + discountBill.getAbsoluteDiscount());
     }
 }
